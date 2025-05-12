@@ -13,7 +13,11 @@ const Sky = () => {
   const curveRef = useRef<CurveModifierRef>(null);
 
   const handlePos = useMemo(
-    () => [new Vector3(15, 0, 0), new Vector3(-15, 0, 0)],
+    () => [
+      new Vector3(31, 0, 0),
+      new Vector3(0, 0, -31),
+      new Vector3(-31, 0, 0),
+    ],
     []
   );
 
@@ -24,7 +28,7 @@ const Sky = () => {
 
   useFrame(() => {
     if (curveRef.current) {
-      curveRef.current.moveAlongCurve(-0.001);
+      curveRef.current.moveAlongCurve(0.002);
     }
   });
 
@@ -32,11 +36,11 @@ const Sky = () => {
 
   return (
     <CurveModifier ref={curveRef} curve={curve}>
-      <mesh ref={ref} position={[0, 0, 0]} rotation={[1, 0, 0]}>
+      <mesh ref={ref} rotation={[0, 0, 0]}>
         <textGeometry
           args={[
             "nakadashi means creampie",
-            { font, size: 1, height: 1, depth: 0 },
+            { font, size: -1, height: 1, depth: 0 },
           ]}
         />
         <meshStandardMaterial color="#ffffff" />
