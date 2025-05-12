@@ -5,6 +5,7 @@ const Screen = () => {
     <div className={styles.container}>
       <div className={styles.upperLid}></div>
       <div className={styles.lowerLid}></div>
+      <div className={styles.content}></div>
     </div>
   );
 };

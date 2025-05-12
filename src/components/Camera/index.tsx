@@ -1,10 +1,14 @@
 import { useThree, useFrame } from "@react-three/fiber";
 
-const Camera = () => {
-  const { camera, pointer } = useThree();
+interface CameraProps {
+  cursor: { x: number; y: number };
+}
+
+const Camera = ({ cursor }: CameraProps) => {
+  const { camera } = useThree();
 
   return useFrame(() => {
-    camera.lookAt(pointer.x, pointer.y, 0);
+    camera.lookAt(cursor.x, cursor.y, 0);
   });
 };
 

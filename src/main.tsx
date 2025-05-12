@@ -1,28 +1,26 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import { Canvas } from "@react-three/fiber";
-import Donut from "./components/Donut";
-import Sky from "./components/Sky";
-import Camera from "./components/Camera";
-import Screen from "./components/Screen";
+import App from "./components/App";
+
+const cursor = {
+  x: 0,
+  y: 0,
+};
+
+document.addEventListener("mousemove", (event) => {
+  cursor.x =
+    ((window.innerWidth / 2 - window.innerWidth + event.clientX) /
+      window.innerWidth) *
+    2;
+  cursor.y =
+    ((window.innerHeight / 2 - window.innerHeight + event.clientY) /
+      window.innerHeight) *
+    -2;
+});
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Canvas>
-      {/* <ambientLight intensity={Math.PI / 2} /> */}
-      <spotLight
-        position={[10, 10, 0]}
-        angle={0.15}
-        penumbra={1}
-        decay={0}
-        intensity={Math.PI}
-      />
-      <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
-      <Sky />
-      <Donut position={[0, 0, 0]} />
-      <Camera />
-    </Canvas>
-    <Screen />
+    <App cursor={cursor} />
   </StrictMode>
 );
