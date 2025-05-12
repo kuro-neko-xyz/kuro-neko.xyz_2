@@ -5,13 +5,14 @@ import { Canvas } from "@react-three/fiber";
 import Donut from "./components/Donut";
 import Sky from "./components/Sky";
 import Camera from "./components/Camera";
+import Screen from "./components/Screen";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Canvas>
-      <ambientLight intensity={Math.PI / 2} />
+      {/* <ambientLight intensity={Math.PI / 2} /> */}
       <spotLight
-        position={[10, 10, 10]}
+        position={[10, 10, 0]}
         angle={0.15}
         penumbra={1}
         decay={0}
@@ -22,5 +23,6 @@ createRoot(document.getElementById("root")!).render(
       <Donut position={[0, 0, 0]} />
       <Camera />
     </Canvas>
+    <Screen />
   </StrictMode>
 );
