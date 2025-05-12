@@ -1,5 +1,5 @@
 import { useFrame } from "@react-three/fiber";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Mesh } from "three";
 
 interface BoxProps {
@@ -18,6 +18,10 @@ const Box = (props: BoxProps) => {
       ref.current.rotation.y += delta;
     }
   });
+
+  useEffect(() => {
+    document.body.style.cursor = hovered ? "pointer" : "auto";
+  }, [hovered]);
 
   return (
     <mesh
