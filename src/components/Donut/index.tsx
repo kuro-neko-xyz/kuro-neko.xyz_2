@@ -1,12 +1,14 @@
 import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
 import { Mesh } from "three";
+import { useLoader } from "@react-three/fiber";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
 interface BoxProps {
   position: [number, number, number];
 }
 
-const Box = (props: BoxProps) => {
+const Donut = (props: BoxProps) => {
   const ref = useRef(null) as React.RefObject<Mesh | null>;
 
   const [hovered, hover] = useState(false);
@@ -23,19 +25,20 @@ const Box = (props: BoxProps) => {
     document.body.style.cursor = hovered ? "pointer" : "auto";
   }, [hovered]);
 
+  const gltf = useLoader(GLTFLoader, "/src/assets/models/donut.gltf");
+
   return (
     <mesh
       {...props}
       ref={ref}
-      scale={clicked ? 1.5 : 1}
+      scale={clicked ? 15 : 10}
       onClick={() => click(!clicked)}
       onPointerOver={() => hover(true)}
       onPointerOut={() => hover(false)}
     >
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
+      <primitive object={gltf.scene} />
     </mesh>
   );
 };
 
-export default Box;
+export default Donut;
