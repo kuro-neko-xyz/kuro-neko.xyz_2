@@ -15,7 +15,9 @@ const Sky = () => {
   const handlePos = useMemo(
     () => [
       new Vector3(31, 0, 0),
+      new Vector3(0.707106781 * 31, 0, -0.707106781 * 31),
       new Vector3(0, 0, -31),
+      new Vector3(-0.707106781 * 31, 0, -0.707106781 * 31),
       new Vector3(-31, 0, 0),
     ],
     []
