@@ -26,11 +26,11 @@ const Sky = () => {
 
   const handlePos = useMemo(
     () => [
-      new Vector3(radius, 0, 0),
-      new Vector3(0.707106781 * radius, 0, -0.707106781 * radius),
-      new Vector3(0, 0, -radius),
-      new Vector3(-0.707106781 * radius, 0, -0.707106781 * radius),
-      new Vector3(-radius, 0, 0),
+      new Vector3(radius, -2.5, 0),
+      new Vector3(0.707106781 * radius, -2.5, -0.707106781 * radius),
+      new Vector3(0, -2.5, -radius),
+      new Vector3(-0.707106781 * radius, -2.5, -0.707106781 * radius),
+      new Vector3(-radius, -2.5, 0),
     ],
     []
   );
@@ -53,8 +53,8 @@ const Sky = () => {
       <mesh ref={ref} rotation={[0, 0, 0]}>
         <textGeometry
           args={[
-            "nakadashi means creampie nakadashi means creampie nakadashi means creampie nakadashi means creampie nakadashi means creampie",
-            { font, size: -1, height: 1, depth: 0 },
+            "nakadashi means creampie",
+            { font, size: -5, height: 1, depth: 0 },
           ]}
         />
         <meshStandardMaterial color="#ffffff" />
