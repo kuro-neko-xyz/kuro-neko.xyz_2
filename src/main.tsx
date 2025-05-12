@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import { Canvas } from "@react-three/fiber";
 import Box from "./components/Box";
+import Sky from "./components/Sky";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -16,8 +17,8 @@ createRoot(document.getElementById("root")!).render(
         intensity={Math.PI}
       />
       <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
-      <Box position={[-1.2, 0, 0]} />
-      <Box position={[1.2, 0, 0]} />
+      <Sky />
+      <Box position={[0, 0, 0]} />
     </Canvas>
   </StrictMode>
 );

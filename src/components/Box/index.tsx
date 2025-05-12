@@ -15,6 +15,7 @@ const Box = (props: BoxProps) => {
   useFrame((_, delta) => {
     if (ref.current) {
       ref.current.rotation.x += delta;
+      ref.current.rotation.y += delta;
     }
   });
 
