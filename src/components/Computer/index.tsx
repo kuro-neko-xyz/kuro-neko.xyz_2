@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { Mesh } from "three";
 import { useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { useDispatch } from "react-redux";
+import { TOGGLE_SCREEN } from "../../redux/constants";
 
 interface BoxProps {
   position: [number, number, number];
@@ -11,10 +13,13 @@ const Computer = (props: BoxProps) => {
   const ref = useRef(null) as React.RefObject<Mesh | null>;
 
   const [hovered, hover] = useState(false);
-  const [clicked, click] = useState(false);
+
+  const dispatch = useDispatch();
 
   const handleClick = () => {
-    click(!clicked);
+    dispatch({
+      type: TOGGLE_SCREEN,
+    });
   };
 
   useEffect(() => {

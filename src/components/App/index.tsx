@@ -2,7 +2,9 @@ import { Canvas } from "@react-three/fiber";
 import Computer from "../Computer";
 import Sky from "../Sky";
 import Camera from "../Camera";
-// import Screen from "../Screen";
+import Screen from "../Screen";
+import { useSelector } from "react-redux";
+import type { State } from "../../redux/models";
 
 interface AppProps {
   cursor: {
@@ -12,6 +14,8 @@ interface AppProps {
 }
 
 const App = ({ cursor }: AppProps) => {
+  const showScreen = useSelector((state: State) => state.showScreen);
+
   return (
     <>
       <Canvas>
@@ -28,7 +32,7 @@ const App = ({ cursor }: AppProps) => {
         <Computer position={[0, 0, 0]} />
         <Camera cursor={cursor} />
       </Canvas>
-      {/* <Screen /> */}
+      {showScreen && <Screen />}
     </>
   );
 };
