@@ -1,8 +1,8 @@
 import { Canvas } from "@react-three/fiber";
-import Donut from "../Donut";
+import Computer from "../Computer";
 import Sky from "../Sky";
 import Camera from "../Camera";
-import Screen from "../Screen";
+// import Screen from "../Screen";
 
 interface AppProps {
   cursor: {
@@ -23,12 +23,12 @@ const App = ({ cursor }: AppProps) => {
           decay={0}
           intensity={Math.PI}
         />
-        <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
+        <pointLight position={[10, 10, 10]} decay={0} intensity={Math.PI} />
         <Sky />
-        <Donut position={[0, 0, 0]} />
+        <Computer position={[0, 0, 0]} />
         <Camera cursor={cursor} />
       </Canvas>
-      <Screen />
+      {/* <Screen /> */}
     </>
   );
 };

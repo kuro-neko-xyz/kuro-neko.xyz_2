@@ -1,4 +1,3 @@
-import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
 import { Mesh } from "three";
 import { useLoader } from "@react-three/fiber";
@@ -8,31 +7,27 @@ interface BoxProps {
   position: [number, number, number];
 }
 
-const Donut = (props: BoxProps) => {
+const Computer = (props: BoxProps) => {
   const ref = useRef(null) as React.RefObject<Mesh | null>;
 
   const [hovered, hover] = useState(false);
   const [clicked, click] = useState(false);
 
-  useFrame((_, delta) => {
-    if (ref.current) {
-      ref.current.rotation.x += delta;
-      ref.current.rotation.y += delta;
-    }
-  });
+  const handleClick = () => {
+    click(!clicked);
+  };
 
   useEffect(() => {
     document.body.style.cursor = hovered ? "pointer" : "auto";
   }, [hovered]);
 
-  const gltf = useLoader(GLTFLoader, "/src/assets/models/donut.gltf");
+  const gltf = useLoader(GLTFLoader, "/src/assets/models/computer.gltf");
 
   return (
     <mesh
       {...props}
       ref={ref}
-      scale={clicked ? 15 : 10}
-      onClick={() => click(!clicked)}
+      onClick={() => handleClick()}
       onPointerOver={() => hover(true)}
       onPointerOut={() => hover(false)}
     >
@@ -41,4 +36,4 @@ const Donut = (props: BoxProps) => {
   );
 };
 
-export default Donut;
+export default Computer;
