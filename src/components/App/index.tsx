@@ -29,7 +29,7 @@ const App = ({ cursor }: AppProps) => {
         />
         <pointLight position={[10, 10, 10]} decay={0} intensity={Math.PI} />
         <Sky />
-        <Computer position={[0, 0, 0]} />
+        <Computer position={[0, 0, 0]} cursor={cursor} />
         <Camera cursor={cursor} />
       </Canvas>
       {showScreen && <Screen />}
